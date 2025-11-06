@@ -6,7 +6,7 @@
     "langchain-nvidia-ai-endpoints>=0.1.0"
   ],
   "graphs": {
-    "communication_health": "langgraph_studio_server:graph"
+    "communication_health": "var_comm_health.langgraph_studio_server:graph"
   },
   "env": ".env"
 }

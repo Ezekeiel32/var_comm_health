@@ -2,7 +2,7 @@
 
 from langchain_core.language_models import BaseChatModel
 
-from config import get_config
+from .config import get_config
 
 
 def create_llm() -> BaseChatModel:

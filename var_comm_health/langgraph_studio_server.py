@@ -10,8 +10,8 @@ warnings.filterwarnings(
     module="langchain_nvidia_ai_endpoints"
 )
 
-from workflow import create_communication_health_workflow
-from llm_factory import create_llm
+from .workflow import create_communication_health_workflow
+from .llm_factory import create_llm
 
 # Create LLM instance
 llm = create_llm()
