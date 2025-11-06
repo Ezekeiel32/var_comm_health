@@ -1,0 +1,26 @@
+{
+  "input_type": "emails",
+  "emails": [
+    {
+      "from": "Instagram <no-reply@mail.instagram.com>",
+      "subject": "168953 is your Instagram code",
+      "body": "Hi,\n\nSomeone tried to sign up for an Instagram account with screenew32@gmail.com. If it was you, enter this confirmation code in the app:\n\n168953",
+      "date": "Thu 4 Sept, 23:31",
+      "sent_at": "Thu 4 Sept, 23:31"
+    }
+  ],
+  "transcript": null,
+  "context": {
+    "email_metadata": {
+      "body_length": 259,
+      "word_count": 33,
+      "exclamation_count": 0,
+      "question_count": 0,
+      "has_attachment": false,
+      "urgency_score": 0.0,
+      "category": "normal",
+      "sentiment": "neutral",
+      "risk_level": "low"
+    }
+  }
+}

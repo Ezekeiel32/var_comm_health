@@ -1,0 +1,26 @@
+{
+  "input_type": "emails",
+  "emails": [
+    {
+      "from": "Anthropic Team <notice@email.anthropic.com>",
+      "subject": "We're Updating our Consumer Terms and Privacy Policy",
+      "body": "Claude\nHello,\n\n \n\nWe're writing to inform you about important updates to our Consumer Terms and Privacy Policy. These changes will take effect on September 28, 2025, or you can choose to accept the updated terms before this date when you log in to Claude.ai. \n\n \n\nThese changes only affect Consumer accounts (Claude Free, Pro, and Max plans). If you use Claude for Work, via the API, or other services under our Commercial Terms or other Agreements, then these changes don't apply to you. \n\n \n\nWhat's changing?\n\n \n\n1. Help improve Claude by allowing us to use your chats and coding sessions to improve our models\n\n \n\nWith your permission, we will use your chats and coding sessions to train and improve our AI models. If you accept the updated Consumer Terms before September 28, your preference takes effect immediately. \n\n \n\nIf you choose to allow us to use your data for model training, it helps us:\nImprove our AI models and make Claude more helpful and accurate for everyone\nDevelop more robust safeguards to help prevent misuse of Claude\nWe will only use chats and coding sessions you initiate or resume after you give permission. You can change your preference anytime in your Privacy Settings.\n\n \n\n2. Updates to data retention– your choices and controls\n\n \n\nIf you choose to allow us to use your data for model training, we'll retain this data for 5 years. This enables us to improve Claude through deeper model training as described above, while strengthening our safety systems over time. You retain full control over how we use your data: if you change your training preference, delete individual chats, or delete your account, we'll exclude your data from future model training. Learn more about our data retention practices here.\n\n \n\nLearn more and next steps\n\nFor detailed information about these changes:\n\nRead our blog post about these updates\nReview the updated Consumer Terms and Privacy Policy\nVisit our Privacy Center for more information about our practices\nSee our Help Center articles on how to manage your privacy settings\nNext time you log into Claude, review the terms and confirm your settings\nIf you have questions about these updates, please visit our Help Center.\n\n \n\n–The Anthropic Team\n\nAnthropic logo\n \nX icon\tLinkedIn icon\tYouTube icon\n \n \nThis email was sent to screenew32@gmail.com.\n\n \nAnthropic PBC, 548 Market St, PMB 90375, San Francisco, CA 94104",
+      "date": "Thu 4 Sept, 19:14",
+      "sent_at": "Thu 4 Sept, 19:14"
+    }
+  ],
+  "transcript": null,
+  "context": {
+    "email_metadata": {
+      "body_length": 3500,
+      "word_count": 600,
+      "exclamation_count": 0,
+      "question_count": 1,
+      "has_attachment": false,
+      "urgency_score": 0.25,
+      "category": "normal",
+      "sentiment": "neutral",
+      "risk_level": "low"
+    }
+  }
+}

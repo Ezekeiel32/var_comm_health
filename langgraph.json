@@ -1,0 +1,12 @@
+{
+  "dependencies": [
+    "langgraph>=1.0.0",
+    "langchain-core>=0.3.0",
+    "pydantic-settings>=2.0.0",
+    "langchain-nvidia-ai-endpoints>=0.1.0"
+  ],
+  "graphs": {
+    "communication_health": "langgraph_studio_server:graph"
+  },
+  "env": ".env"
+}

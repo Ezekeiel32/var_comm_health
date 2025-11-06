@@ -1,0 +1,26 @@
+{
+  "input_type": "emails",
+  "emails": [
+    {
+      "from": "Base44 <team@base44.com>",
+      "subject": "A new era of apps at Base44",
+      "body": "Hey Screen,\n\nWhile you've been shipping apps, we've been shipping new features. Here's what's fresh this September 👇\n\nOur biggest drops:\nAnnual Plans\nSupercharge Your Apps: Agents & WhatsApp Are Here:\nAgents are the new way to supercharge your Base44 apps. Agents don't just chat; they can look up information, update your data, trigger backend functions, and more. Think of them as AI assistants that you can install inside your app that don't just talk, they take action.\n\n\nNow we're taking that power directly to you on Whatsapp Imagine getting instant updates, checking project status, managing entries, or receiving important reminders, all within your existing conversations where you already chat. This new integration means zero setup overhead for you, as Base conveniently supplies the necessary numbers. You'll enjoy rich conversations using text, images, and voice messages, just like within Base44, with a single click launching your chat with an agent. Experience unparalleled convenience and efficiency, connecting with your Base44 agents wherever you are.\n\n\n👉 Head over to the Agents section of your app dashboard to enable them.\n\nUser Login\t\nStay in the loop with \"What's new\"\nNever miss a drop. A new section under the bell icon (top-right) keeps you up to speed with every update. Open your workspace, tap the bell, and you'll always be in the know.\n\nPermissions\t\nEarn credits with referrals\nInvite friends, get rewarded. Every time someone you invite publishes their first project, you'll earn 10 credits. Bring in 5 friends and that's 50 credits for free. Your referral link lives on your homepage.\n\nInternal Apps\t\nNeed a hand?\nNeed a boost for your app? Base44 Partners — top freelancers, teams, and agencies — are ready to help you design, build, and scale. Browse the directory and connect with the right partner in just a few clicks.\n\n👉 Check out our partners\n\nPlenty more where that came from. See you in a few weeks with bigger drops.\n\nBack to building",
+      "date": "Mon 22 Sept, 23:01",
+      "sent_at": "Mon 22 Sept, 23:01"
+    }
+  ],
+  "transcript": null,
+  "context": {
+    "email_metadata": {
+      "body_length": 5619,
+      "word_count": 932,
+      "exclamation_count": 0,
+      "question_count": 10,
+      "has_attachment": false,
+      "urgency_score": 0.3,
+      "category": "normal",
+      "sentiment": "neutral",
+      "risk_level": "low"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "input_type": "emails",
+  "emails": [
+    {
+      "from": "PDF By sweety mangla <updates@academia-mail.com>",
+      "subject": "📄 \"Study of Crawlers and Indexing Techniques In Hidden Web\" by sweety mangla",
+      "body": "You read the paper Aryeh Kaplan, Sefer Yetzirah. We found a related paper on Academia:\n\nStudy of Crawlers and Indexing Techniques In Hidden Web\nPaper Thumbnail\t\nAuthor Photo sweety mangla\n169 Views \nView PDF ▸\n  \t\t\nDownload PDF ⬇\n\n\nABSTRACT\nThe traditional search engine work to crawl, index and query the \"Surface web\". The Hidden Web is the willing on the Web that is accessible through a html form. not general search engines. This Hidden web forms 96% of the total web .The hidden web contains the high quality data and has a broad coverage. So hidden...\nread more...\n\nYour recent reading history:\nAryeh Kaplan, Sefer Yetzirah - Gökhan Duran\nWant fewer recommendations like this one?\n\n580 California St., Suite 400, San Francisco, CA, 94104\n\nUnsubscribe   Privacy Policy   Terms of Service  \n\n© 2025 Academia",
+      "date": "Thu 31 Jul, 13:22",
+      "sent_at": "Thu 31 Jul, 13:22"
+    }
+  ],
+  "transcript": null,
+  "context": {
+    "email_metadata": {
+      "body_length": 4571,
+      "word_count": 580,
+      "exclamation_count": 6,
+      "question_count": 2,
+      "has_attachment": false,
+      "urgency_score": 0.8400000000000001,
+      "category": "normal",
+      "sentiment": "neutral",
+      "risk_level": "low"
+    }
+  }
+}
