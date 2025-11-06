@@ -1,6 +1,6 @@
 # Communication Health Analysis Agent via LangGraph
 
-This repo contains a LangGraph workflow that analyzes communication health from emails and meeting transcripts, producing structured scoring across 6 key dimensions and provides important insights for communication  improvement.
+This repo contains a LangGraph workflow that analyzes communication health from emails and meeting transcripts, producing structured scoring across 6 key dimensions, providing important insights for communication  improvement.
 
 ## Overview
 
@@ -33,7 +33,7 @@ Input (Emails/Transcript)
 
 ### Node Types
 
-1. **Preprocessing Node** (Deterministic)
+1. **Preprocessing Node** (Deterministic [Non LLM])
 
    - Handles email threads or meeting transcripts
    - Extracts metadata (participants, timestamps, speaker info)
@@ -43,7 +43,7 @@ Input (Emails/Transcript)
    - Each node makes an independent LLM call
    - Evaluates one dimension of communication health
    - Returns structured JSON: `{"score": float, "reasoning": str}`
-3. **Aggregation Node** (Deterministic)
+3. **Aggregation Node** (Deterministic [Non LLM])
 
    - Waits for all 6 dimensions to complete
    - Calculates overall health score (unweighted average)
@@ -58,9 +58,9 @@ Input (Emails/Transcript)
 
 ### Why 6 Dimensions?
 
-Communication health is modeled as a **multi-dimensional construct** because effective communication requires excellence across multiple aspects:
+Communication health is modeled as a **multi-dimensional construct** because effective communication requires excellence across multiple domains:
 
-1. **Clarity** - Can the message be understood?
+1. **Clarity** - Is the message being understood?
 2. **Completeness** - Is all necessary information present?
 3. **Correctness** - Is the information accurate and coherent?
 4. **Courtesy** - Is the tone appropriate and respectful?
@@ -157,6 +157,71 @@ This demonstrates **multi-step LLM reasoning** where each step builds on previou
 
 ## To Run the Workflow in Langraph Studio:
 
+### Option 1: Quick Start with Docker Hub (Recommended)
+
+The easiest way to run this project is using the pre-built Docker image from Docker Hub. This eliminates all dependency issues and works identically on Windows, macOS, and Linux.
+
+**Prerequisites:**
+
+- [Docker](https://www.docker.com/get-started) installed
+- `.env` file in your root folder
+
+**Quick Start:**
+
+1. **Create `.env` file** in your root (see Configuration section below)
+2. **Pull and run the pre-built image:**
+
+   ```bash
+   docker pull ymzpe/communication-health:latest
+   docker run -d -p 8123:8123 --env-file .env --name communication-health ymzpe/communication-health:latest
+   ```
+3. **Access LangGraph Studio:**
+
+   - Open your browser to `http://localhost:8123`
+
+**Or use Docker Compose with pre-built image:**
+
+```bash
+   # Update docker-compose.yml to use image instead of build (see docker-compose.yml comments)
+   # Change 'build: .' to 'image: ymzpe/communication-health:latest'
+   docker-compose up -d
+```
+
+**Stop the container:**
+
+```bash
+   docker stop communication-health
+   docker rm communication-health
+```
+
+---
+
+### Option 2: Build Locally with Docker
+
+If you prefer to build the image yourself or make modifications:
+
+**Prerequisites:**
+
+- [Docker](https://www.docker.com/get-started) installed
+- `.env` file in the root folder
+
+**Build and run:**
+
+```bash
+# Build the image
+docker build -t communication-health .
+
+# Run the container
+docker run -d -p 8123:8123 --env-file .env --name communication-health communication-health
+
+# Or use docker-compose
+docker-compose up --build
+```
+
+---
+
+### Option 3: Local Python Installation
+
 ### Prerequisites
 
 - **Python 3.9 or higher** (Python 3.10+ recommended)
@@ -186,17 +251,28 @@ pip install -r requirements.txt
 pip install -r requirements.txt
 ```
 
+### Troubleshooting Installation Issues
+
+If you encounter installation errors (especially on systems without Anaconda):
+
+1. **Upgrade pip first:**
+
+   ```bash
+   pip install --upgrade pip setuptools wheel
+   ```
+2. **Install build tools (if needed):**
+
+   - **Linux:** `sudo apt-get install build-essential python3-dev` (Ubuntu/Debian) or `sudo yum install gcc python3-devel` (RHEL/CentOS)
+   - **macOS:** Install Xcode Command Line Tools: `xcode-select --install`
+   - **Windows:** Install [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+3. **If `langgraph dev` command not found:**
+
+   - Ensure `langgraph-cli` is installed: `pip install langgraph-cli`
+   - Verify installation: `langgraph --version`
+
 ## Configuration
 
-Create a `.env` file or set environment variables (I will include a fully working .env file to be utilised for this demo):
-
-```bash
-# Required: NVIDIA API for DeepSeek
-NVIDIA_API_KEY=your_nvidia_api_key
-NVIDIA_MODEL=deepseek-ai/deepseek-v3.1-terminus
-NVIDIA_API_URL=https://integrate.api.nvidia.com/v1
-
-```
+A `.env` file is necessary for access of LLM (I will include a fully working .env file to be utilised for this demo):
 
 Place the .env in the root path of this repo.
 
@@ -240,6 +316,9 @@ var_comm_health/
 ├── langgraph_studio_server.py  # LangGraph Studio server entry point
 ├── langgraph.json       # LangGraph Studio configuration
 ├── requirements.txt     # Dependencies
+├── Dockerfile           # Docker image definition
+├── docker-compose.yml   # Docker Compose configuration
+├── .dockerignore        # Files to exclude from Docker build
 └── README.md           # This file
 ```
 
@@ -253,7 +332,7 @@ var_comm_health/
  **Natural Language Explanation**: LLM-generated summary
  **LLM USED:**: Uses DeepSeek v3.1-terminus via NVIDIA NIM
 
-## Evaluation Criteria Alignment
+## Key Features
 
 - **Product Thinking**: 6-dimension framework models communication health comprehensively
 - **LangGraph Structure**: Proper StateGraph with clear node/edge relationships

@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  langgraph-studio:
+    # Option 1: Build from local Dockerfile (default)
+    build: .
+    
+    # Option 2: Use pre-built image from Docker Hub (uncomment to use)
+    # Remove or comment out the 'build: .' line above when using this option
+    # image: ymzpe/communication-health:latest
+    
+    container_name: communication-health-studio
+    ports:
+      - "8123:8123"
+    env_file:
+      - .env
+    volumes:
+      # Mount code for live reloading during development
+      # Comment out this volume mount when using pre-built image from Docker Hub
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
