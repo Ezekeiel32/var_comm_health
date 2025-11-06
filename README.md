@@ -1,10 +1,10 @@
 # Communication Health Analysis Agent via LangGraph
 
-A LangGraph workflow that analyzes communication health from emails and meeting transcripts, producing structured scoring across 6 key dimensions and provides key insights for communication health improvement, via LLM-powered reasoning.
+This repo contains a LangGraph workflow that analyzes communication health from emails and meeting transcripts, producing structured scoring across 6 key dimensions and provides important insights for communication  improvement.
 
 ## Overview
 
-This implementation demonstrates **structured reasoning through a graph-based workflow** using LangGraph. The workflow uses LLM calls at multiple nodes to analyze communication quality, aggregate results, and generate explanations.
+This implementation demonstrates **structured reasoning through a graph-based workflow** using LangGraph. The workflow uses LLM calls at multiple nodes to analyze communication quality, aggregate results, and generate analysis of the communacation health overall	.
 
 ## Graph Structure
 
@@ -155,10 +155,32 @@ This demonstrates **multi-step LLM reasoning** where each step builds on previou
 - **Fair (0.4-0.6)**: Some timing problems or urgency mismatch
 - **Poor (0.0-0.4)**: Untimely, inappropriate urgency
 
-
 ## To Run the Workflow in Langraph Studio:
 
-## Install Requirements
+### Prerequisites
+
+- **Python 3.9 or higher** (Python 3.10+ recommended)
+- pip (Python package manager)
+
+### Install Requirements
+
+**Recommended: Use a virtual environment**
+
+```bash
+# Create virtual environment (optional but recommended)
+python -m venv venv
+
+# Activate virtual environment
+# On Linux/macOS:
+source venv/bin/activate
+# On Windows:
+# venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+**Or install directly:**
 
 ```bash
 pip install -r requirements.txt
@@ -175,15 +197,18 @@ NVIDIA_MODEL=deepseek-ai/deepseek-v3.1-terminus
 NVIDIA_API_URL=https://integrate.api.nvidia.com/v1
 
 ```
+
 Place the .env in the root path of this repo.
 
 ### Start the Langgraph Studio Server:
 
-From the root of this repo, in the terminal, run:
+From the root of this repo, in the terminal (or command prompt on Windows), run:
 
-```
+```bash
 langgraph dev
 ```
+
+This will start the LangGraph Studio server. The interface will be available in your browser (typically at `http://localhost:8123`).
 
 ### Included Email and Meeting Transcription Samples
 
@@ -202,8 +227,6 @@ I will also include short video demonstrating the workflow.
 2. **Parallel Analysis**: 6 dimensions analyzed simultaneously for efficiency
 3. **Aggregation Before Explanation**: Explanation node needs complete scores
 4. **Sequential Final Steps**: Aggregation → Explanation → End (logical flow)
-
-
 
 ## File Structure
 
@@ -228,12 +251,11 @@ var_comm_health/
  **Thread/Transcript Support**: Handles both input types natively
  **Structured Output**: JSON format with scores and reasoning
  **Natural Language Explanation**: LLM-generated summary
- **DeepSeek via NVIDIA**: Uses DeepSeek v3.1-terminus model
+ **LLM USED:**: Uses DeepSeek v3.1-terminus via NVIDIA NIM
 
 ## Evaluation Criteria Alignment
 
--  **Product Thinking**: 6-dimension framework models communication health comprehensively
--  **LangGraph Structure**: Proper StateGraph with clear node/edge relationships
--  **Readability**: Clean code with type hints and documentation
--  **Smart LLM Use**: Purposeful LLM calls at analysis and explanation nodes
-
+- **Product Thinking**: 6-dimension framework models communication health comprehensively
+- **LangGraph Structure**: Proper StateGraph with clear node/edge relationships
+- **Readability**: Clean code with type hints and documentation
+- **Smart LLM Use**: Purposeful LLM calls at analysis and explanation nodes
