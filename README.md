@@ -1,6 +1,6 @@
 # Communication Health Analysis Agent via LangGraph
 
-A LangGraph workflow that analyzes communication health from emails and meeting transcripts, producing structured scoring across 6 key dimensions and provides key insights for communication health improvement, via LLM-powered reasoning, and f
+A LangGraph workflow that analyzes communication health from emails and meeting transcripts, producing structured scoring across 6 key dimensions and provides key insights for communication health improvement, via LLM-powered reasoning.
 
 ## Overview
 
@@ -9,6 +9,8 @@ This implementation demonstrates **structured reasoning through a graph-based wo
 ## Graph Structure
 
 The workflow is structured as a **LangGraph StateGraph** with the following architecture:
+
+![Communication Health Analysis Workflow](graph.png)
 
 ```
 Input (Emails/Transcript)
@@ -153,7 +155,10 @@ This demonstrates **multi-step LLM reasoning** where each step builds on previou
 - **Fair (0.4-0.6)**: Some timing problems or urgency mismatch
 - **Poor (0.0-0.4)**: Untimely, inappropriate urgency
 
-## Installation
+
+## To Run the Workflow in Langraph Studio:
+
+## Install Requirements
 
 ```bash
 pip install -r requirements.txt
@@ -161,7 +166,7 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Create a `.env` file or set environment variables:
+Create a `.env` file or set environment variables (I will include a fully working .env file to be utilised for this demo):
 
 ```bash
 # Required: NVIDIA API for DeepSeek
@@ -170,43 +175,24 @@ NVIDIA_MODEL=deepseek-ai/deepseek-v3.1-terminus
 NVIDIA_API_URL=https://integrate.api.nvidia.com/v1
 
 ```
+Place the .env in the root path of this repo.
 
-## Usage
+### Start the Langgraph Studio Server:
 
-### Basic Example: Email Thread
-
+From the root of this repo, in the terminal, run:
 
 ```
-
-## Output Format
-
-The workflow returns a state dictionary with:
-
-```python
-{
-    "aggregated_health": {
-        "overall": 0.75,  # Overall health score (0.0-1.0)
-        "dimensions": {
-            "clarity": 0.8,
-            "completeness": 0.7,
-            "correctness": 0.9,
-            "courtesy": 0.75,
-            "audience": 0.7,
-            "timeliness": 0.65
-        },
-        "total_dimensions": 6
-    },
-    "communication_health_scores": {
-        "clarity": {
-            "score": 0.8,
-            "reasoning": "Clear and direct communication..."
-        },
-        # ... other dimensions
-    },
-    "health_explanation": "Overall communication health is good...",
-    "status": "completed"
-}
+langgraph dev
 ```
+
+### Included Email and Meeting Transcription Samples
+
+For the demonstration of this workflow, I've included sample emails and meetings in the expected JSON format.
+They are in the folder: example_communication_files, e.g., meeting_transcript_sample2.json, email_sample_3.json.
+To test the workflow, once in the Langgraph studio page, paste the entire contents of any of the JSON files
+into the input bar, under the graph. The system will automatically determine if it is a meeting or an email. Press Submit.
+Watch the analysis happen in real-time and check on any of the stages.
+I will also include short video demonstrating the workflow.
 
 ## Design Decisions
 
@@ -228,15 +214,16 @@ var_comm_health/
 ├── workflow.py          # LangGraph workflow (THIS IS THE CORE)
 ├── analyzer.py          # Helper functions (optional, for standalone use)
 ├── llm_factory.py       # LLM instance creation
+├── langgraph_studio_server.py  # LangGraph Studio server entry point
+├── langgraph.json       # LangGraph Studio configuration
 ├── requirements.txt     # Dependencies
-├── example_usage.py     # Usage examples
 └── README.md           # This file
 ```
 
 ## Features
 
  **LangGraph Workflow**: Proper StateGraph with nodes and edges
- **LLM at Multiple Nodes**: 7 LLM calls for specialized reasoning
+ **LLM at Multiple Nodes**: 7 efficient LLM calls for specialized reasoning
  **Parallel Execution**: 6 dimensions analyzed simultaneously
  **Thread/Transcript Support**: Handles both input types natively
  **Structured Output**: JSON format with scores and reasoning
@@ -249,3 +236,4 @@ var_comm_health/
 -  **LangGraph Structure**: Proper StateGraph with clear node/edge relationships
 -  **Readability**: Clean code with type hints and documentation
 -  **Smart LLM Use**: Purposeful LLM calls at analysis and explanation nodes
+
