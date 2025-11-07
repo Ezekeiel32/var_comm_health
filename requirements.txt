@@ -3,7 +3,7 @@
 
 # LangGraph and LangChain
 langgraph>=1.0.0
-langgraph-cli>=0.2.0  # Required for 'langgraph dev' command
+langgraph-cli[inmem]>=0.2.0  # Required for 'langgraph dev' command (includes langgraph-api-inmem)
 langchain-core>=0.3.0
 langchain-nvidia-ai-endpoints>=0.1.0
 
