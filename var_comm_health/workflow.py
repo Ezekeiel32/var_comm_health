@@ -33,7 +33,7 @@ class CommunicationHealthState(BaseModel):
     Uses separate fields for each dimension to avoid concurrent write conflicts.
     """
     # Input data
-    input_type: Literal["emails", "transcript"]
+    input_type: Optional[Literal["emails", "transcript"]] = None  # Auto-detected in preprocess if not provided
     emails: Optional[List[Dict[str, Any]]] = None  # For email threads: [{"from": str, "subject": str, "body": str, "date": str, ...}]
     transcript: Optional[str] = None  # For meeting transcripts: "Speaker 1: ...\nSpeaker 2: ..."
     
@@ -130,7 +130,19 @@ def preprocess_node(state: CommunicationHealthState) -> dict:
     }
     
     try:
-        if state.input_type == "emails":
+        # Auto-detect input_type if not provided
+        detected_input_type = state.input_type
+        if not detected_input_type:
+            if state.emails and len(state.emails) > 0:
+                detected_input_type = "emails"
+            elif state.transcript:
+                detected_input_type = "transcript"
+            else:
+                return {"error": "No input provided: must include either 'emails' or 'transcript'", "status": "error"}
+        
+        updates["input_type"] = detected_input_type
+        
+        if detected_input_type == "emails":
             # Process email thread
             emails = state.emails or []
             if not emails:
@@ -165,7 +177,7 @@ def preprocess_node(state: CommunicationHealthState) -> dict:
                 "has_thread_structure": len(emails) > 1
             }
             
-        elif state.input_type == "transcript":
+        elif detected_input_type == "transcript":
             # Process meeting transcript
             transcript = state.transcript or ""
             if not transcript:
@@ -187,7 +199,7 @@ def preprocess_node(state: CommunicationHealthState) -> dict:
                 "speakers": list(speakers) if speakers else []
             }
         else:
-            return {"error": f"Unknown input_type: {state.input_type}", "status": "error"}
+            return {"error": f"Unknown input_type: {detected_input_type}", "status": "error"}
         
         updates["status"] = "preprocessed"
         updates["communication_health_scores"] = {}
@@ -445,7 +457,9 @@ def analyze_timeliness_node(state: CommunicationHealthState, llm: BaseChatModel)
     context = state.context.copy() if state.context else {}
     
     # Calculate response times if timestamps available
-    if state.input_type == "emails" and state.emails:
+    # Note: input_type should be set by preprocess node, but check for safety
+    input_type = state.input_type or ("emails" if state.emails else "transcript")
+    if input_type == "emails" and state.emails:
         emails = state.emails
         if len(emails) > 1:
             # Calculate response times between emails
