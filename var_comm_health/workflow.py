@@ -1,7 +1,7 @@
 """LangGraph workflow for Communication Health Analysis.
 
 This module implements a LangGraph workflow that analyzes communication health
-using an LLM-powered analyzer, across six dimensions: clarity, completeness, correctness, courtesy, audience-centricity, and timeliness."""
+using LLM-powered analysis, across six dimensions: clarity, completeness, correctness, courtesy, audience-centricity, and timeliness."""
 
 from __future__ import annotations
 

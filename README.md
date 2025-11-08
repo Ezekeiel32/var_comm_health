@@ -367,7 +367,6 @@ var_comm_health/
 │   ├── __init__.py          # Module exports
 │   ├── config.py            # Configuration management
 │   ├── workflow.py          # LangGraph workflow (THIS IS THE CORE)
-│   ├── analyzer.py          # Helper functions (optional, for standalone use)
 │   ├── llm_factory.py       # LLM instance creation
 │   └── langgraph_studio_server.py  # LangGraph Studio server entry point
 ├── examples/                # Example files and samples
