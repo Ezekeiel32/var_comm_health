@@ -1,5 +1,7 @@
 # Communication Health Agent
 
+[![CI](https://github.com/Ezekeiel32/var_comm_health/actions/workflows/ci.yml/badge.svg)](https://github.com/Ezekeiel32/var_comm_health/actions/workflows/ci.yml) [![Release](https://img.shields.io/github/v/release/Ezekeiel32/var_comm_health?label=release)](https://github.com/Ezekeiel32/var_comm_health/releases) [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE) ![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB) ![LangGraph](https://img.shields.io/badge/LangGraph-1.x-1C3C3C) ![Docker](https://img.shields.io/badge/Docker-ready-2496ED)
+
 A LangGraph agent that scores the communication health of an email thread or a meeting transcript. Six LLM nodes run in parallel, each scoring one dimension from 0 to 1 with a short reason. A deterministic node averages the scores, and a final LLM node writes a plain-language summary with recommendations.
 
 ![Workflow graph](graph.png)
@@ -83,6 +85,15 @@ Sample inputs are in `examples/example_communication_files/`: five email threads
 | `var_comm_health/langgraph_studio_server.py` | Entry point for LangGraph Studio |
 | `langgraph.json` | LangGraph server configuration |
 | `examples/` | Sample emails and meeting transcripts |
+
+## Development
+
+```bash
+pip install pytest
+pytest -q
+```
+
+The tests cover the deterministic parts of the workflow: parsing a model's answer, preprocessing the input and aggregating the six scores. They need no API key. CI runs them on every pull request. The branch model and the pull request checklist are in [CONTRIBUTING.md](CONTRIBUTING.md), and release notes are in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 

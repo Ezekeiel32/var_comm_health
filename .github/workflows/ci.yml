@@ -1,0 +1,32 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Python sources compile
+        run: python -m compileall -q var_comm_health
+
+      - name: Install test dependencies
+        run: |
+          pip install -q "langgraph>=1.0.0" "langchain-core>=0.3.0" "pydantic>=2.0.0" pytest
+
+      - name: Tests
+        run: pytest -q
